@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "pessoa")
@@ -16,19 +19,13 @@ public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 7551552303872379439L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-
-	@NotNull
 	private String nome;
-
-	@Embedded
 	private Endereco endereco;
-
-	@NotNull
 	private Boolean ativo;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -37,6 +34,7 @@ public class Pessoa implements Serializable {
 		this.codigo = codigo;
 	}
 
+	@NotNull
 	public String getNome() {
 		return nome;
 	}
@@ -45,6 +43,7 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
+	@Embedded
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -53,6 +52,7 @@ public class Pessoa implements Serializable {
 		this.endereco = endereco;
 	}
 
+	@NotNull
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -60,7 +60,13 @@ public class Pessoa implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-
+	
+	@JsonIgnore
+	@Transient
+	public boolean isInativo() {
+		return !this.ativo;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,6 +91,5 @@ public class Pessoa implements Serializable {
 			return false;
 		return true;
 	}
-	
 
 }

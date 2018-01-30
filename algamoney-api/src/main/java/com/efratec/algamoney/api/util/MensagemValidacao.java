@@ -1,5 +1,6 @@
 package com.efratec.algamoney.api.util;
 
+
 public class MensagemValidacao {
 	
 	private String mensagemValidacao;
@@ -10,7 +11,7 @@ public class MensagemValidacao {
 		this.mensagemValidacao = mensagemValidacao;
 		this.mensagemDesenvolvedor = mensagemDesenvolvedor;
 	}
-
+	
 
 	public String getMensagemValidacao() {
 		return mensagemValidacao;
@@ -30,5 +31,7 @@ public class MensagemValidacao {
 	public void setMensagemDesenvolvedor(String mensagemDesenvolvedor) {
 		this.mensagemDesenvolvedor = mensagemDesenvolvedor;
 	}
+	
+	
 
 }

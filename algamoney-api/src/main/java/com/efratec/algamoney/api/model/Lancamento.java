@@ -1,5 +1,6 @@
 package com.efratec.algamoney.api.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,38 +14,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.efratec.algamoney.api.model.enums.TipoLancamento;
 
 @Entity
 @Table(name = "lancamento")
-public class Lancamento {
+public class Lancamento implements Serializable {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = -1352104446424941149L;
+	
 	private Long codigo;
 	private String descricao;
 	private BigDecimal valor;
 	private String observacao;
-
-	@Column(name = "data_vencimento")
 	private LocalDate dataVencimento;
-
-	@Column(name = "data_pagamento")
 	private LocalDate dataPagamento;
-	
-
-	@Enumerated(EnumType.STRING)
 	private TipoLancamento tipo;
-
-	@ManyToOne
-	@JoinColumn(name = "codigo_categoria")
 	private Categoria categoria;
-
-	@ManyToOne
-	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -53,6 +44,7 @@ public class Lancamento {
 		this.codigo = codigo;
 	}
 
+	@NotNull
 	public String getDescricao() {
 		return descricao;
 	}
@@ -61,6 +53,8 @@ public class Lancamento {
 		this.descricao = descricao;
 	}
 
+	@NotNull
+	@Column(name = "data_vencimento")
 	public LocalDate getDataVencimento() {
 		return dataVencimento;
 	}
@@ -69,6 +63,7 @@ public class Lancamento {
 		this.dataVencimento = dataVencimento;
 	}
 
+	@Column(name = "data_pagamento")
 	public LocalDate getDataPagamento() {
 		return dataPagamento;
 	}
@@ -77,6 +72,7 @@ public class Lancamento {
 		this.dataPagamento = dataPagamento;
 	}
 
+	@NotNull
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -93,6 +89,8 @@ public class Lancamento {
 		this.observacao = observacao;
 	}
 
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	public TipoLancamento getTipo() {
 		return tipo;
 	}
@@ -101,6 +99,9 @@ public class Lancamento {
 		this.tipo = tipo;
 	}
 
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "codigo_categoria")
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -109,6 +110,9 @@ public class Lancamento {
 		this.categoria = categoria;
 	}
 
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "codigo_pessoa")
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -141,8 +145,5 @@ public class Lancamento {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }
