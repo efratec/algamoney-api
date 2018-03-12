@@ -24,5 +24,12 @@ public class LancamentoService {
 
 		return lancamentoRepository.save(entidade);
 	}
+	
+	
+	public void removerLancamentoPorCodigo(Long codigoLancamento) {
+		if (codigoLancamento != null) {
+			lancamentoRepository.delete(lancamentoRepository.findOne(codigoLancamento));
+		}
+	}
 
 }
