@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+<title>Relatorio GNRE</title>
+<style>
+body {
+	margin: 30px;
+}
+input {
+	margin-bottom: 10px;
+}
+</style>
+<body>
+
+<!--<button onclick="imprimirDanfe(3, 241, false);">Testar</button> -->
+	<h4>GNRE</h4>
+	<form class="pure-form"action="relatorio/gerar/gnre" method="POST" target="_blank">
+		<input type="text" placeholder="p_codigo_barras" name="p_codigo_barras" />
+		<input type="text" placeholder="p_uf_favorecida" name="p_uf_favorecida" />
+		<input type="text" placeholder="p_cod_receita" name="p_cod_receita" />
+		<input type="text" placeholder="p_razao_social_emit" name="p_razao_social_emit" />
+		<input type="text" placeholder="p_ender_emit" name="p_ender_emit" />
+		<input type="text" placeholder="p_municipio_emit" name="p_municipio_emit" />
+		<input type="text" placeholder="p_produto" name="p_produto" />
+		<input type="text" placeholder="p_dat_pagamento" name="p_dat_pagamento" />
+		<input type="text" placeholder="p_periodo_ref" name="p_periodo_ref" />
+		<input type="text" placeholder="p_mes_ano_ref" name="p_mes_ano_ref" />
+		<input type="text" placeholder="p_parcela" name="p_parcela" />
+		<input type="text" placeholder="p_vlr_principal" name="p_vlr_principal" />
+		<input type="text" placeholder="p_juros" name="p_juros" />
+		<input type="text" placeholder="p_repr_numerica" name="p_repr_numerica" />
+		<input type="text" placeholder="p_numero_controle" name="p_numero_controle" />
+		<input type="text" placeholder="p_convenio" name="p_convenio" />
+		<input type="text" placeholder="p_uf_emitente" name="p_uf_emitente" />
+		<input type="text" placeholder="p_tel_emitente" name="p_tel_emitente" />
+		<input type="text" placeholder="p_num_doc_origem" name="p_num_doc_origem" />
+		<input type="text" placeholder="p_atualizacao_monet" name="p_atualizacao_monet" />
+		<input type="text" placeholder="p_tot_recolher" name="p_tot_recolher" />
+		<input type="text" placeholder="p_cnpj_cpf_insc_est" name="p_cnpj_cpf_insc_est" />
+		<input type="text" placeholder="p_dat_vencimento" name="p_dat_vencimento" /> 
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+
+	<!-- <h4>Danfe</h4>
+	<form class="pure-form"action="danfe/imprimir" method="POST" target="_blank">
+		<input type="text" name="idNotaFiscal" />
+		<input type="hidden" name="download" value="false" />
+		<input type="hidden" name="idEmpresa" value="3" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>GPS</h4>
+	<form class="pure-form"action="relatorio/gerar/gps" method="POST" target="_blank">
+		<input type="text" name="p_id_consolida_imposto" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Danfe List ZIP</h4>
+	<form class="pure-form"action="danfe/imprimirVarios" method="POST" target="_blank">
+	
+		<input type="text" name="idNotaFiscalList" />
+		<input type="text" name="formato" />
+		<input type="hidden" name="download" value="false" />
+		<input type="hidden" name="idEmpresa" value="3" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Darf</h4>
+	<form class="pure-form"action="relatorio/gerar/darf" method="POST" target="_blank">
+		<input type="text" name="logo" value="brasao.jpg" />
+		<input type="text" name="number.p_id_apuracao_darf" placeholder="p_id_apuracao_darf" />
+		<input type="text" name="idNotaFiscal" />
+		<input type="hidden" name="download" value="false" />
+		<input type="hidden" name="idEmpresa" value="3" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>DAM</h4>
+	<form class="pure-form"action="relatorio/gerar/dam" method="POST" target="_blank">
+		<input type="text" name="logo" value="brasao.jpg" /><br/>
+		<input type="text" name="number.p_id_consolida_imposto" placeholder="number.p_id_consolida_imposto" /><br/>
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Processar Recibo</h4>
+	<form class="pure-form"action="nfeutil/processar" method="POST" target="_blank">
+	
+		<input type="text" name="idNotaFiscal" placeholder="idNotaFiscal" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Consultar Notas Fiscais sem TAG chNFE</h4>
+	<form class="pure-form"action="nfeutil/consultar" method="POST" target="_blank">
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Criar Protocolo XML Retorno</h4>
+	<form class="pure-form"action="nfeutil/criarProtocoloXmlRetorno" method="POST" target="_blank">
+	
+		<input type="text" name="idNotaFiscal" placeholder="idNotaFiscal" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Criar NFE e Assinar</h4>
+	<form class="pure-form"action="nfeutil/criarESalvarNFeAssinada" method="POST" target="_blank">
+	
+		<input type="text" name="idNotaFiscal" placeholder="idNotaFiscal" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Carta de Correção</h4>
+	<form class="pure-form" action="relatorio/gerar/cartaCorrecao" method="POST" target="_blank">
+		<input type="text" name="logo" value="brasao.jpg" />
+		<input type="text" name="number.p_id_carta_correcao" placeholder="p_id_carta_correcao" />
+		<input type="hidden" name="download" value="false" />
+		<input type="hidden" name="idEmpresa" value="3" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Pedido - Força de Vendas</h4>
+	<form class="pure-form" action="relatorio/gerar/cupomFiscal" method="POST" target="_blank">
+		<input type="text" name="number.p_id_pedido" placeholder="p_id_pedido" />
+		<input type="hidden" name="download" value="false" />
+		<input type="hidden" name="idEmpresa" value="3" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	<h4>Abertura de Caixa</h4>
+	<form class="pure-form" action="relatorio/gerar/caixaAbertura" method="POST" target="_blank">
+		<input type="text" name="number.p_id_caixa" placeholder="p_id_caixa" />
+		<input type="text" name="number.p_id_empresa" placeholder="p_id_empresa"/>
+		<input type="text" name="number.p_id_usuario" placeholder="p_id_usuario"/>
+		<input type="hidden" name="download" value="false" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form>
+	
+	
+	<h4>Fechamento de Caixa</h4>
+	<form class="pure-form" action="relatorio/gerar/caixaFechamento" method="POST" target="_blank">
+		<input type="text" name="number.p_id_caixa" placeholder="p_id_caixa" />
+		<input type="text" name="number.p_id_empresa" placeholder="p_id_empresa"/>
+		<input type="text" name="number.p_id_usuario" placeholder="p_id_usuario"/>
+		<input type="hidden" name="download" value="false" />
+		<input type="submit" class="pure-button pure-button-primary" value="Imprimir"/>
+	</form> -->
+	
+	
+	<script type="text/javascript" src="app-relatorio.js"></script>
+</body>
+</html>
